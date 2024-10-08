@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Articles Home</h1>
+<div class="articles">
+    {% for art in article %}
+    <div class="article">
+<h2><a href=#>{{ art.title }}</a></h2>
+        <p>{{ art.snippet }}</p>
+        <p>{{ art.date }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
