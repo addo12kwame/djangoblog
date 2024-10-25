@@ -1,0 +1,27 @@
+body {
+background-image: url(/static/bg.jpg);
+background-repeat-y : no-repeat;
+color: #fff;
+font-family: Ubuntu;
+width: 80%;
+}
+
+h1,h2,h3,h4,h5 {
+font-weight: normal;
+margin: 0;
+}
+
+a,a:visited {
+color: #fff;
+text-decoration: none;
+}
+
+a:hover{
+border: dashed 4px #fff;
+}
+
+.article-detail {
+
+    background-color: "yellow";
+}
+

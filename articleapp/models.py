@@ -8,8 +8,8 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    thumb = models.ImageField(default="/media/wide.png", blank=True)
     # author
-    # thumbnail
 
     def __str__(self):
         return self.title

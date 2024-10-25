@@ -1,14 +1,66 @@
 {% load static  %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Articles</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'c.css' %}">
 </head>
+<!--<style>-->
+<!--    body {-->
+<!--background-image: url(/static/bg.jpg);-->
+<!--color :#fff;-->
+<!--background-repeat-y : no-repeat;-->
+<!--font-family: Ubuntu;-->
+<!--display: flex;-->
+<!--flex-direction : column;-->
+<!--justify-content: center;-->
+<!--align-items: center;-->
+<!--width: 80%;-->
+<!--font-size: 2rem;-->
+<!--margin: auto;-->
+<!--}-->
+
+
+
+<!--h1,h2,h3,h4,h5 {-->
+<!--font-weight: normal;-->
+<!--margin: 0;-->
+<!--}-->
+
+<!--a,a:visited {-->
+<!--color: #fff;-->
+<!--text-decoration: none;-->
+<!--}-->
+
+<!--a:hover{-->
+<!--border: dashed 4px #fff;-->
+<!--}-->
+
+<!--.article-detail {-->
+
+<!--    background-color: "yellow";-->
+<!--    font-size: 2rem-->
+<!--}-->
+
+
+<!--</style>-->
 <body>
-<div class="wrapper">
-  {% block content %}
+<header class="wrapper">
+    <h1><a href="{% url 'articles:home' %}"><img src="{% static '11.jpg' %} " width="100px" height="100px" alt="logo"></a></h1>
+ <nav>
+     <ul>
+         <li>
+             <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                 {% csrf_token %}
+                 <button type="submit">Logout</button>
+             </form>
+         </li>
+     </ul>
+ </nav>
+  <div class="wrapper">
+    {% block content %}
     {% endblock %}
 </div>
 </body>

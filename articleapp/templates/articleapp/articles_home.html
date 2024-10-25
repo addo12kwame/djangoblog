@@ -5,7 +5,8 @@
 <div class="articles">
     {% for art in article %}
     <div class="article">
-<h2><a href=#>{{ art.title }}</a></h2>
+<!--        this is how we serve named urls and pass an argument to it-->
+<h2><a href="{% url 'articles:detail' slug=art.slug %}">{{ art.title }}</a></h2>
         <p>{{ art.snippet }}</p>
         <p>{{ art.date }}</p>
     {% endfor %}
