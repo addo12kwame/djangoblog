@@ -7,58 +7,33 @@
     <title>Articles</title>
     <link rel="stylesheet" href="{% static 'c.css' %}">
 </head>
-<!--<style>-->
-<!--    body {-->
-<!--background-image: url(/static/bg.jpg);-->
-<!--color :#fff;-->
-<!--background-repeat-y : no-repeat;-->
-<!--font-family: Ubuntu;-->
-<!--display: flex;-->
-<!--flex-direction : column;-->
-<!--justify-content: center;-->
-<!--align-items: center;-->
-<!--width: 80%;-->
-<!--font-size: 2rem;-->
-<!--margin: auto;-->
-<!--}-->
 
-
-
-<!--h1,h2,h3,h4,h5 {-->
-<!--font-weight: normal;-->
-<!--margin: 0;-->
-<!--}-->
-
-<!--a,a:visited {-->
-<!--color: #fff;-->
-<!--text-decoration: none;-->
-<!--}-->
-
-<!--a:hover{-->
-<!--border: dashed 4px #fff;-->
-<!--}-->
-
-<!--.article-detail {-->
-
-<!--    background-color: "yellow";-->
-<!--    font-size: 2rem-->
-<!--}-->
-
-
-<!--</style>-->
 <body>
 <header class="wrapper">
-    <h1><a href="{% url 'articles:home' %}"><img src="{% static '11.jpg' %} " width="100px" height="100px" alt="logo"></a></h1>
+    <h1><a href="{% url 'home' %}"><img src="{% static 'Blog1.gif' %} " width="200px" height="100px" alt="blog logo"></a></h1>
  <nav>
      <ul>
+         {% if user.is_authenticated %}
          <li>
              <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                  {% csrf_token %}
                  <button type="submit">Logout</button>
              </form>
          </li>
+         <li>
+             <a href="{% url 'articles:create' %}" class="highlight"> Create new article </a>
+         </li>
+         {% else  %}
+         <li>
+             <a href="{% url 'accounts:login' %}"> Login 👇</a>
+         </li>
+         <li>
+             <a href="{% url 'accounts:signup' %}"> Sign up 🆙 </a>
+         </li>
+         {% endif %}
      </ul>
  </nav>
+</header>
   <div class="wrapper">
     {% block content %}
     {% endblock %}

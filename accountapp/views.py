@@ -23,6 +23,10 @@ def login_view(request):
             # Log in the user
             user = form.get_user()
             login(request, user)
+
+            # this next is an input in the html but we get the value from the request.get.next
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect("articles:home")
 
     else:
@@ -32,4 +36,4 @@ def login_view(request):
 def logout_view(request):
     if request.method == "POST":
         logout(request)
-        return redirect("articles:home")
+        return redirect("accounts:login")

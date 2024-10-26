@@ -17,13 +17,15 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from .views import for_about
+from .views import for_about,home
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from articleapp import views as article_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/', include('articleapp.urls')),
+    path('',article_views.articles_home, name='home'),
     path('accounts/', include('accountapp.urls')),
 path("__reload__/", include("django_browser_reload.urls")),
 ]
