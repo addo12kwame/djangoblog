@@ -14,6 +14,7 @@ def signup_view(request):
             return redirect('articles:home')
     else:
         form = UserCreationForm()
+        print(request.path)
     return render(request,'accounts/signup.html', context={'form': form})
 
 def login_view(request):

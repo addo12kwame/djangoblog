@@ -9,7 +9,8 @@
 </head>
 
 <body>
-<header class="wrapper">
+<div class="container ">
+<header class="wrapper container--narrow">
     <h1><a href="{% url 'home' %}"><img src="{% static 'Blog1.gif' %} " width="200px" height="100px" alt="blog logo"></a></h1>
  <nav>
      <ul>
@@ -17,19 +18,26 @@
          <li>
              <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                  {% csrf_token %}
-                 <button type="submit">Logout</button>
+                 <button class="logout" type="submit">Logout</button>
              </form>
          </li>
          <li>
              <a href="{% url 'articles:create' %}" class="highlight"> Create new article </a>
          </li>
          {% else  %}
+
+         {% if request.path == '/accounts/signup/' %}
          <li>
-             <a href="{% url 'accounts:login' %}"> Login 👇</a>
+             <a href="{% url 'accounts:login' %}"  class="logout"> Login 👇</a>
          </li>
+         {% endif %}
+
+          {% if not request.path == '/accounts/signup/' %}
+
          <li>
-             <a href="{% url 'accounts:signup' %}"> Sign up 🆙 </a>
+             <a href="{% url 'accounts:signup' %}" class="logout"> Sign up 🆙 </a>
          </li>
+         {% endif %}
          {% endif %}
      </ul>
  </nav>
@@ -37,6 +45,7 @@
   <div class="wrapper">
     {% block content %}
     {% endblock %}
+</div>
 </div>
 </body>
 </html>
